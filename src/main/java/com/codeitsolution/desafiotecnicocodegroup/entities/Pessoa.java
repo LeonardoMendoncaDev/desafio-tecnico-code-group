@@ -25,4 +25,7 @@ public class Pessoa {
     @Column(name = "funcionario")
     private Boolean funcionario;
 
+    @Column(name = "atribuicao", length = 100)
+    private String atribuicao;
+
 }

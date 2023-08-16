@@ -1,6 +1,7 @@
 package com.codeitsolution.desafiotecnicocodegroup.entities;
 
 import com.codeitsolution.desafiotecnicocodegroup.entities.Pessoa;
+import com.codeitsolution.desafiotecnicocodegroup.entities.enums.StatusProjeto;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,9 +30,6 @@ public class Projeto {
     @Column(name = "descricao", length = 5000)
     private String descricao;
 
-    @Column(name = "status", length = 45)
-    private String status;
-
     @Column(name = "orcamento")
     private Float orcamento;
 
@@ -41,5 +39,9 @@ public class Projeto {
     @ManyToOne
     @JoinColumn(name = "idgerente", nullable = false)
     private Pessoa gerente;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 45)
+    private StatusProjeto status;
 
 }
