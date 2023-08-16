@@ -62,7 +62,6 @@ public class ProjetoController implements ProjetoResource {
             }
             return ResponseEntity.ok(projeto);
         } catch (Exception e) {
-            // Aqui, você pode querer registrar a exceção ou outras ações com base na exceção.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao buscar o projeto com ID: " + id);
         }
     }
@@ -80,10 +79,8 @@ public class ProjetoController implements ProjetoResource {
             Projeto createdProjeto = projetoService.save(projeto);
             return new ResponseEntity<>(createdProjeto, HttpStatus.CREATED); // Retorna 201 Created se o projeto for criado com sucesso.
         } catch (DataIntegrityViolationException e) {
-            // Esta exceção pode ser lançada se, por exemplo, houver uma violação de constraint no banco de dados.
             return ResponseEntity.badRequest().body("Erro de integridade de dados: " + e.getMessage());
         } catch (Exception e) {
-            // Aqui, você pode querer registrar a exceção ou outras ações com base na exceção.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao criar o projeto.");
         }
     }
@@ -108,10 +105,8 @@ public class ProjetoController implements ProjetoResource {
             return ResponseEntity.ok(updatedProjeto); // Retorna 200 OK com o projeto atualizado
 
         } catch (DataIntegrityViolationException e) {
-            // Esta exceção pode ser lançada se, por exemplo, houver uma violação de constraint no banco de dados.
             return ResponseEntity.badRequest().body("Erro de integridade de dados: " + e.getMessage());
         } catch (Exception e) {
-            // Aqui, você pode querer registrar a exceção ou outras ações com base na exceção.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao atualizar o projeto.");
         }
     }
